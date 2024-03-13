@@ -19,6 +19,7 @@ def index(request):
 def about(request):
     context: dict[str:any] = {
         'title': 'About Page',
-        'content': 'About page content'
+        'content': 'About page content',
+        'text_on_page': 'some label on page'
     }
     return render(request, 'main/about.html', context=context)
