@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>{{ content }}</h1>
+    <h2>Сырые данные</h2>
+    <p>{{ list }}</p>
+    <p>{{ dict }}</p>
+    <p>{{ bool }}</p>
+
+    <h2>Обработанные</h2>
+    {% if bool %}
+    <p>{{ list.0 }}</p>
+    <p>{{ dict.1 }}</p>
+    {% endif %}
+  </body>
+</html>
