@@ -12,6 +12,9 @@ class Categories(models.Model):
         verbose_name = "Категория"  # В админ панельке
         verbose_name_plural = 'Категории'
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Products(models.Model):
     name = models.CharField(max_length=150, unique=True,
@@ -34,3 +37,6 @@ class Products(models.Model):
         db_table = 'product'
         verbose_name = "Продукт"
         verbose_name_plural = 'Продукты'
+
+    def __str__(self) -> str:
+        return self.name / f' Количество - {self.quantity}'
