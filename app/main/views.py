@@ -7,7 +7,7 @@ from django.shortcuts import render
 
 def index(request):
     context: dict[str:any] = {
-        'title': 'Home',
+        'title': 'Home App',
         'content': 'Main page of shop',
         'list': ['first', 'second', 'third'],
         'dict': {1: 'one', 2: 'two', 3: 'three'},
@@ -17,4 +17,8 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about/index.html')
+    context: dict[str:any] = {
+        'title': 'About Page',
+        'content': 'About page content'
+    }
+    return render(request, 'main/about.html', context=context)
