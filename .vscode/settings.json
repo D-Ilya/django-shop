@@ -25,7 +25,7 @@
     ],
 
     "[python]": {
-        "editor.defaultFormatter": "ms-python.flake8"
+        "editor.defaultFormatter": "ms-python.autopep8"
     },
     "emmet.includeLanguages": {
         "django-html": "html"
@@ -44,7 +44,7 @@
 
 
     "[django-html]": {
-        "editor.defaultFormatter": "batisteo.vscode-django",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "breadcrumbs.showClasses": true,
         "editor.quickSuggestions": {
             "other": true,
