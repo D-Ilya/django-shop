@@ -28,7 +28,7 @@ class Products(models.Model):
     price = models.DecimalField(
         default='0.00', max_digits=7, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(
-        default='0.00', max_digits=2, decimal_places=2, verbose_name='Скидка%')
+        default='0.00', max_digits=4, decimal_places=2, verbose_name='Скидка%')
     quantity = models.PositiveIntegerField(
         default=0, verbose_name='Количество')
     category_id = models.ForeignKey(to=Categories, on_delete=models.PROTECT)
@@ -39,4 +39,4 @@ class Products(models.Model):
         verbose_name_plural = 'Продукты'
 
     def __str__(self) -> str:
-        return self.name / f' Количество - {self.quantity}'
+        return f'{self.name} Количество - {self.quantity}'
