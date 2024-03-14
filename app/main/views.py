@@ -1,17 +1,16 @@
-# from urllib import response
 from django.shortcuts import render
 # from django.http import HttpResponse
 
-# Create your views here.
+from goods.models import Categories
 
 
 def index(request):
+
+    categories = Categories.objects.all()
     context: dict[str:any] = {
         'title': 'Home App',
         'content': 'Main page of shop',
-        'list': ['first', 'second', 'third'],
-        'dict': {1: 'one', 2: 'two', 3: 'three'},
-        'bool': True
+        'categories': categories
     }
     return render(request, 'main/index.html', context=context)
 
