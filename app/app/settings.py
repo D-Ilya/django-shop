@@ -14,6 +14,8 @@ from pathlib import Path
 
 from django.conf.global_settings import STATICFILES_DIRS
 
+import django.conf.global_settings as gs
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -128,6 +130,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS += [
     BASE_DIR / 'static'
 ]
+
+gs.MEDIA_URL = 'media/'
+gs.MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # The Debug Toolbar is shown only if your IP address is listed in Django’s
 INTERNAL_IPS = [
