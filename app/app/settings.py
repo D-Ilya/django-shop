@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # project-apps
     'main',
     'goods',
+    # extension
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # extension
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -122,6 +127,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS += [
     BASE_DIR / 'static'
+]
+
+# The Debug Toolbar is shown only if your IP address is listed in Django’s
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 # Default primary key field type
