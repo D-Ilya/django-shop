@@ -1,15 +1,17 @@
+import re
 from django.shortcuts import get_list_or_404, render
 from django.core.paginator import Paginator
 
 from goods.models import Products
 
 
-def catalog(request, category_slug, page_num=1):
+def catalog(request, category_slug):
+    page = request.GET.get('page', 1)
     goods = Products.objects.all() \
         if category_slug == 'all' \
         else get_list_or_404(Products.objects.filter(category_id__slug=category_slug))
     p = Paginator(goods, 3)
-    current_page = p.page(page_num)
+    current_page = p.page(page)
     context = {
         'title': 'Home - Catalog',
         'goods': current_page,
