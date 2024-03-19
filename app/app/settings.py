@@ -84,10 +84,21 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_shop',  # имя вашей базы данных
+        'USER': 'avalon',  # ваш пользователь PostgreSQL
+        'PASSWORD': 'avalon',  # ваш пароль PostgreSQL
+        'HOST': '0.0.0.0',  # хост для подключения к контейнеру
+        'PORT': '5432',  # порт для подключения к контейнеру
     }
 }
 
