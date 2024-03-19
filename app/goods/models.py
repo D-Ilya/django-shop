@@ -31,7 +31,7 @@ class Products(models.Model):
         default='0.00', max_digits=4, decimal_places=2, verbose_name='Скидка%')
     quantity = models.PositiveIntegerField(
         default=0, verbose_name='Количество')
-    category_id = models.ForeignKey(to=Categories, on_delete=models.PROTECT)
+    category = models.ForeignKey(to=Categories, on_delete=models.PROTECT)
 
     class Meta:
         db_table = 'product'
