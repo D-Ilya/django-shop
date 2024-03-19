@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # project-apps
     'main',
     'goods',
+    'users',
     # extension
     "debug_toolbar",
 ]
