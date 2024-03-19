@@ -48,6 +48,14 @@
                             </form>
                         </div>
 
+                        {% if request.GET.q %}
+                            <h3 class="mt-4">Результаты по запросу:</h3>
+                            {% if not goods %}
+                            <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}" />
+                            <h2 class="mt-4">По запросу ничего не найдено.</h2>
+                            {% endif %}
+                        {% endif %}
+
                         {% for product in goods %}
                             <!-- Карта товара -->
                             <div class="col-lg-4 col-md-6 p-4">
@@ -59,9 +67,25 @@
                                     {% endif %}
                                     <div class="card-body">
                                         <a href="{% url "catalog:product" product.slug %}">
-                                            <p class="card-title">{{ product.name }}</p>
+                                            <p class="card-title">
+                                                {% if product.name_line %}
+                                                    {% autoescape off %}
+                                                    {{ product.name_line }}
+                                                    {% endautoescape %}
+                                                {% else %}
+                                                    {{ product.name }}
+                                                {% endif %}
+                                            </p>
                                         </a>
-                                        <p class="card-text">{{ product.description|truncatechars:40 }}</p>
+                                        <p class="card-text">
+                                            {% if product.description_line %}
+                                                {% autoescape off %}
+                                                {{ product.description_line|truncatechars:80 }}
+                                                {% endautoescape %}
+                                            {% else %}
+                                                {{ product.description|truncatechars:40 }}
+                                            {% endif %}
+                                        </p>
                                         <p class="product_id">id: {{ product.display_id}}</p>
                                         <div class="d-flex justify-content-between">
                                             {% if product.discount %}
@@ -82,6 +106,8 @@
                         {% endfor %}
 
                     </div>
+
+                    {% if goods %}
                     <!-- Пагинация -->
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center my-4">
@@ -106,6 +132,7 @@
                             </div>
                         </ul>
                     </nav>
+                    {% endif %}
 
 {% endblock content %}
 
