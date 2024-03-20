@@ -1,11 +1,27 @@
+from django.contrib import auth
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+
+from users.forms import UserLoginForm
 
 # Create your views here.
 
 
 def login(request):
+    if request.method == 'POST':
+        if (form := UserLoginForm(data=request.POST)) and form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+
+            if user := auth.authenticate(username=username, password=password):
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse('main:index'))
+    else:
+        form = UserLoginForm()
     context = {
-        'title': 'Авторизация'
+        'title': 'Авторизация',
+        'form': form
     }
 
     return render(request, 'users/login.html', context)
