@@ -8,7 +8,7 @@ class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(
         label='Имя пользователя:',
-        widget=forms.PasswordInput(attrs={
+        widget=forms.TextInput(attrs={
             "autofocus": True,
             'class': 'form-control',
             'placeholder': 'Введите имя пользователя'
