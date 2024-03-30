@@ -17,7 +17,10 @@ def login(request):
             if user := auth.authenticate(username=username, password=password):
                 auth.login(request, user)
                 messages.success(request, f'Здраствуйте, {username}')
+                if next_page := request.POST.get('next'):
+                    return HttpResponseRedirect(next_page)
                 return HttpResponseRedirect(reverse('main:index'))
+
     else:
         form = UserLoginForm()
     context = {
