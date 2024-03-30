@@ -1,4 +1,4 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -16,6 +16,8 @@ def login(request):
 
             if user := auth.authenticate(username=username, password=password):
                 auth.login(request, user)
+                messages.success(request, f'Здраствуйте, {username}')
+                return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserLoginForm()
     context = {
@@ -33,6 +35,8 @@ def registration(request):
         )) and form.is_valid():
             form.save()
             user = form.instance
+            messages.success(
+                request, f'{user.username}, вы успешно зарегистрированы')
             auth.login(request, user)
 
             return HttpResponseRedirect(reverse('main:index'))
@@ -55,6 +59,8 @@ def profile(request):
                 files=request.FILES
         )) and form.is_valid():
             form.save()
+            messages.success(
+                request, f'{form.instance.username}, Профиль успешно обновлен')
 
             return HttpResponseRedirect(reverse('user:profile'))
     else:
@@ -70,4 +76,5 @@ def profile(request):
 @login_required
 def logout(request):
     auth.logout(request)
+    messages.success(request, 'Вы вышли из аккаунта')
     return redirect(reverse('main:index'))
