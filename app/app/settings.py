@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'main',
     'goods',
     'users',
+    'carts',
     # extension
     "debug_toolbar",
 ]
