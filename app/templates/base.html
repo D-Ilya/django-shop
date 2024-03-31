@@ -47,7 +47,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="carts/cart.html">Корзина</a>
+                            <a class="nav-link  text-white" href="{% url "user:users-cart" %}">Корзина</a>
                         </li>
                         {% if not user.is_authenticated %}
                         <li class="nav-item">
@@ -60,7 +60,7 @@
                                 Мой профиль
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="carts/cart.html">Корзина</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url "user:users-cart" %}">Корзина</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url "users:profile" %}">Личный кабинет</a>
                                 </li>
                                 {% if user.is_admin or user.is_staff %}
@@ -123,10 +123,10 @@
                                 <h3 class="text-center mb-4">Корзина</h3>
                                 <div class="container" id="cart-items-container">
                                     <!-- Разметка корзины -->
-                                    {% {% include "carts/includes/included_cart.html" %}%}
+                                    {% include "carts/includes/included_cart.html" %}
                                     <!-- Закончилась разметка корзины -->
                                 </div>
-                                <a class="btn btn-dark" href="orders/create_order.html">
+                                <a class="btn btn-dark" href="{% url "user:users-cart" %}">
                                     Оформить заказ
                                 </a>
                             </div>
