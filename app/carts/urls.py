@@ -4,7 +4,10 @@ from carts import views
 app_name = 'carts'
 
 urlpatterns = [
-    path('<card_add/',    views.card_add, name='card_add'),
-    path('<card_cnange/', views.card_cnange, name='card_cnange'),
-    path('<card_remove/', views.card_remove, name='card_remove'),
+    path('cart_add/<int:product_id>/',
+         views.cart_add, name='cart_add'),
+    path('cart_cnange/<int:product_id>/',
+         views.cart_cnange, name='cart_cnange'),
+    path('cart_remove/<int:product_id>/',
+         views.cart_remove, name='cart_remove'),
 ]
