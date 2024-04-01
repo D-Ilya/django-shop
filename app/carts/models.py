@@ -49,7 +49,7 @@ class Cart(models.Model):
         verbose_name_plural = 'Корзина'
 
     def product_price(self):
-        return round(self.product.sell_discount(), 2)
+        return round(float(self.product.sell_discount()), 2)
 
     def __str__(self) -> str:
         return f'Корзина "{self.user.username}"|Товар:"{self.product.name}"|Количество:"{self.quntity}"'
