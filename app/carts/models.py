@@ -9,7 +9,7 @@ class CartQuertset(models.QuerySet):
     def total_price(self):
         return sum([cart.product_price() * cart.quntity for cart in self])
 
-    def total_quтity(self):
+    def total_quntity(self):
         return sum([cart.quntity for cart in self])
 
 
